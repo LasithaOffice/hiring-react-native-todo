@@ -5,16 +5,20 @@ import { FONT_REGULAR, FONT_SIZE_REGULAR, FONT_SIZE_TITLE, FONT_TITLE } from '..
 
 type Props = {
   color?: keyof typeof COLORS,
-  text: string
+  text: string,
+  marginTop?: number,
+  marginLeft?: number,
 }
 
-const Typography = ({ color = 'TEXT', ...p }: Props) => {
+const Typography = ({ color = 'TEXT', marginTop = 0, marginLeft = 0, ...p }: Props) => {
 
   const style = useMemo(() => StyleSheet.create({
     text: {
       fontFamily: FONT_REGULAR,
       fontSize: FONT_SIZE_REGULAR,
-      color: COLORS[color]
+      color: COLORS[color],
+      marginTop,
+      marginLeft
       // fontWeight: (p.isTitle) ? '700' : '400'
     }
   }), [p])

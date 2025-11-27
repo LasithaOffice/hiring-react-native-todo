@@ -4,7 +4,11 @@ import Plus from '../../../assets/images/svgs/Plus.svg'
 import { COLORS } from '../../../constants/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
-const FloatingButton = () => {
+type Props = {
+  onPress: () => void
+}
+
+const FloatingButton = (p: Props) => {
 
   const insets = useSafeAreaInsets();
 
@@ -23,7 +27,7 @@ const FloatingButton = () => {
   }), [insets])
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity onPress={p.onPress} style={styles.container}>
       <Plus color={'white'} width={40} height={40} />
     </TouchableOpacity>
   )
