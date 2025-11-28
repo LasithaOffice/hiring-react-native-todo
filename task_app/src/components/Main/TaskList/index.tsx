@@ -5,6 +5,7 @@ import CheckItem from '../../ui/CheckItem'
 import Typography from '../../ui/Typography'
 import { useSelector } from 'react-redux'
 import { getTaskSlice } from '../../../redux/slices/Tasks'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 
 const TaskList = () => {
@@ -12,9 +13,12 @@ const TaskList = () => {
   const tasks = useSelector(getTaskSlice).tasks;
   const currentEdit = useSelector(getTaskSlice).currentEdit;
 
+  const inset = useSafeAreaInsets();
+
   const styles = useMemo(() => StyleSheet.create({
     list: {
       marginTop: 20,
+      marginBottom: inset.bottom + 30
     }
   }), [])
 
@@ -25,7 +29,7 @@ const TaskList = () => {
     <>
       {
         (tasks.length == 0) ?
-          <Typography text='Create your first task...' color='DISABLED_TEXT' marginLeft={24} marginTop={16} />
+          <Typography text='Create your first task...' color='DISABLED_TEXT' marginLeft={24} marginTop={20} />
           :
           <></>
       }
