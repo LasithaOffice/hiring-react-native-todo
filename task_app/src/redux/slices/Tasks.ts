@@ -23,12 +23,15 @@ export const taskSlice = createSlice({
     },
     setCurrentEdit: (state, action: PayloadAction<Task | undefined>) => {
       state.currentEdit = action.payload;
-    }
+    },
+    addTasksList: (state, action: PayloadAction<Task[]>) => {
+      state.tasks = action.payload
+    },
   }
 })
 
 // Action creators are generated for each case reducer function
-export const { addTask, updateTask, removeTask, setCurrentEdit } = taskSlice.actions
+export const { addTask, updateTask, removeTask, setCurrentEdit, addTasksList } = taskSlice.actions
 export const getTaskSlice = (root: RootState) => root.taskSlice;
 
 export default taskSlice.reducer

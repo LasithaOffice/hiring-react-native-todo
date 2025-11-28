@@ -5,7 +5,7 @@
  * @format
  */
 
-import { StatusBar, StyleSheet, useColorScheme } from 'react-native';
+import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 import {
   EdgeInsets,
   SafeAreaProvider,
@@ -19,11 +19,10 @@ import store from './src/redux/store';
 require('./reactotron')
 
 function App() {
-  const isDarkMode = useColorScheme() === 'dark';
   return (
     <Provider store={store}>
       <SafeAreaProvider style={styles.container}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} backgroundColor={COLORS.WHITE} />
+        <StatusBar backgroundColor={COLORS.WHITE} translucent />
         <Main />
       </SafeAreaProvider>
     </Provider>

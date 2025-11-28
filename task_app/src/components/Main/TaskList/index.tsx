@@ -1,5 +1,5 @@
 import { View, Text, FlatList, StyleSheet } from 'react-native'
-import React, { useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { Task } from '../../../types/Task'
 import CheckItem from '../../ui/CheckItem'
 import Typography from '../../ui/Typography'
@@ -13,11 +13,12 @@ const TaskList = () => {
 
   const styles = useMemo(() => StyleSheet.create({
     list: {
-      marginTop: 16,
+      marginTop: 20,
     }
   }), [])
 
   const sortedTasks = useMemo(() => [...taskSlice.tasks].sort((t1, t2) => t2.id - t1.id), [taskSlice])
+  const Row = useCallback(({ index, item }: { index: number, item: Task }) => <CheckItem key={item.id} data={item} />, [])
 
   return (
     <>
@@ -30,9 +31,7 @@ const TaskList = () => {
       <FlatList
         style={styles.list}
         data={sortedTasks}
-        renderItem={
-          ({ index, item }) => <CheckItem key={item.id} data={item} />
-        }
+        renderItem={Row}
       />
     </>
   )

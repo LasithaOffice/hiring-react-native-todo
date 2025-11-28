@@ -1,9 +1,9 @@
 import { useCallback } from "react"
 import { Alert } from "react-native";
-import { Task } from "../types/Task";
-import { addTask, getTaskSlice, removeTask, setCurrentEdit, updateTask } from "../redux/slices/Tasks";
+import { Task } from "../../types/Task";
+import { addTask, getTaskSlice, removeTask, setCurrentEdit, updateTask } from "../../redux/slices/Tasks";
 import { useSelector } from "react-redux";
-import { useAppDispatch } from "../redux/store";
+import { useAppDispatch } from "../../redux/store";
 
 
 const useTaskConfirm = (text: string) => {
