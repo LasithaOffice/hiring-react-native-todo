@@ -4,7 +4,7 @@ import Plus from '../../../assets/images/svgs/Plus.svg'
 import { COLORS } from '../../../constants/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Animated, { Easing, useAnimatedKeyboard, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import useTaskCreater from '../../../hooks/tasks/useTaskManager'
+import useTaskManager from '../../../hooks/tasks/useTaskManager'
 
 const FloatingButton = () => {
 
@@ -31,7 +31,8 @@ const FloatingButton = () => {
   useEffect(() => {
     const showSub = Keyboard.addListener('keyboardWillShow', e => {
       const kbHeight = e.endCoordinates.height;
-      bottom.value = withTiming(kbHeight, {
+      console.log("kbHeight", kbHeight)
+      bottom.value = withTiming(kbHeight + 20, {
         duration: 500,
         easing: Easing.out(Easing.exp)
       });
@@ -57,7 +58,7 @@ const FloatingButton = () => {
 
   const animatedStyle = useAnimatedStyle(() => {
     return {
-      bottom: MIN_BOTTOM,
+      bottom: bottom.value,
       transform: [
         {
           rotate: `${rotate.value}deg`,
@@ -66,7 +67,7 @@ const FloatingButton = () => {
     };
   });
 
-  const { initTask } = useTaskCreater("")
+  const { initTask } = useTaskManager("")
 
   return (
     <Animated.View style={[styles.fab, animatedStyle]}>
