@@ -9,7 +9,8 @@ import { getTaskSlice } from '../../../redux/slices/Tasks'
 
 const TaskList = () => {
 
-  const taskSlice = useSelector(getTaskSlice);
+  const tasks = useSelector(getTaskSlice).tasks;
+  const currentEdit = useSelector(getTaskSlice).currentEdit;
 
   const styles = useMemo(() => StyleSheet.create({
     list: {
@@ -17,13 +18,13 @@ const TaskList = () => {
     }
   }), [])
 
-  const sortedTasks = useMemo(() => [...taskSlice.tasks].sort((t1, t2) => t2.id - t1.id), [taskSlice])
-  const Row = useCallback(({ index, item }: { index: number, item: Task }) => <CheckItem key={item.id} data={item} />, [])
+  const sortedTasks = useMemo(() => [...tasks].sort((t1, t2) => t2.id - t1.id), [tasks])
+  const Row = useCallback(({ index, item }: { index: number, item: Task }) => <CheckItem key={item.id} data={item} />, [currentEdit])
 
   return (
     <>
       {
-        (taskSlice.tasks.length == 0) ?
+        (tasks.length == 0) ?
           <Typography text='Create your first task...' color='DISABLED_TEXT' marginLeft={24} marginTop={16} />
           :
           <></>

@@ -4,7 +4,7 @@ import Plus from '../../../assets/images/svgs/Plus.svg'
 import { COLORS } from '../../../constants/colors'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import Animated, { Easing, useAnimatedKeyboard, useAnimatedStyle, useSharedValue, withTiming } from 'react-native-reanimated'
-import useTaskCreater from '../../../hooks/tasks/useTaskCreater'
+import useTaskCreater from '../../../hooks/tasks/useTaskManager'
 
 const FloatingButton = () => {
 
@@ -66,11 +66,11 @@ const FloatingButton = () => {
     };
   });
 
-  const traksCreater = useTaskCreater()
+  const { initTask } = useTaskCreater("")
 
   return (
     <Animated.View style={[styles.fab, animatedStyle]}>
-      <TouchableOpacity onPress={traksCreater}>
+      <TouchableOpacity onPress={initTask}>
         <Plus color={'white'} width={40} height={40} />
       </TouchableOpacity>
     </Animated.View>

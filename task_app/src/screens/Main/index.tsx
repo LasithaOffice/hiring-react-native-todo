@@ -7,7 +7,7 @@ import CheckItem from '../../components/ui/CheckItem';
 import { Task } from '../../types/Task';
 import FloatingButton from '../../components/ui/FloatingButton';
 import TaskList from '../../components/Main/TaskList';
-import useTaskCreater from '../../hooks/tasks/useTaskCreater';
+import useTaskCreater from '../../hooks/tasks/useTaskManager';
 import useLocalStorage from '../../hooks/main/useLocalStorage';
 
 //This is more like a main component rather than a screen.
