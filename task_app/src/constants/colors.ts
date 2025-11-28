@@ -1,0 +1,8 @@
+export const COLORS = {
+  PRIMARY: "#51ACB4",
+  SECONDARY: "#000000",
+  WHITE: "#ffffff",
+  DISABLED_TEXT: "#555555",
+  TEXT: "#000000",
+  TEXT_FIELD: "#EEEEEE"
+}
